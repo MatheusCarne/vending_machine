@@ -23,11 +23,11 @@ import vending_pkg::*;
 module memory (
   input  logic                     clk,
   input  logic                     rst,
-  input  logic [ADDR_WIDTH-1:0]    sel_item,   // endereço: 0..3
+  input  logic [1:0]    sel_item,   // endereço: 0..3
   input  logic                     mem_read,   // habilita leitura síncrona
   input  logic                     mem_write,  // habilita escrita (decrementa stock)
-  output logic [DATA_WIDTH-1:0]    price,      // preço do item lido (centavos)
-  output logic [DATA_WIDTH-1:0]    stock       // estoque do item lido
+  output logic [7:0]    price,      // preço do item lido (centavos)
+  output logic [7:0]    stock       // estoque do item lido
 );
 
   // ----------------------------------------------------------
@@ -78,4 +78,3 @@ module memory (
   end
 
 endmodule
-
