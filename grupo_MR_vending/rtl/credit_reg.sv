@@ -27,34 +27,21 @@ module credit_reg (
 
   // Decodificação combinacional da moeda (usa função do package)
   logic [7:0] coin_value;
-  assign coin_value = coin_to_cents(coin_in);
+  always_comb begin
+      case (coin_in)
+          2'b00: coin_value = 8'd0;
+          2'b01: coin_value = COIN_25;
+          2'b10: coin_value = COIN_50;
+          2'b11: coin_value = COIN_100;
+      endcase
+  end
 
-  // ----------------------------------------------------------
-  // Registrador síncrono com prioridade explícita
-  // ----------------------------------------------------------
   always_ff @(posedge clk) begin
-    if (rst) begin
-      // Prioridade 1: reset síncrono — zera tudo
-      credit <= 8'd0;
-
-    end else if (cancel) begin
-      // Prioridade 2: cancelamento — devolve crédito ao usuário
-      // (a FSM também volta ao IDLE neste ciclo)
-      credit <= 8'd0;
-
-    end else if (credit_load) begin
-      if (state == CHANGE) begin
-        // Prioridade 3: fim da venda — zera crédito após calcular troco
-        credit <= 8'd0;
-      end else begin
-        // Prioridade 4: COLLECT — acumula valor da moeda
-        // Não verifica overflow: 8 bits comportam até R$2,55,
-        // suficiente para cobrir qualquer item (máx R$1,00)
-        credit <= credit + coin_value;
+      if (rst || cancel) begin
+          credit <= 8'd0;
+      end else if (credit_load) begin
+          credit <= credit + coin_value;
       end
-    end
-    // Sem else: registrador mantém valor (latch-free por ser always_ff)
   end
 
 endmodule
-
