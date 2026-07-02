@@ -21,9 +21,9 @@
 import vending_pkg::*;
 
 module subtractor (
-  input  logic [DATA_WIDTH-1:0] credit,  // crédito acumulado (centavos)
-  input  logic [DATA_WIDTH-1:0] price,   // preço do item selecionado (centavos)
-  output logic [DATA_WIDTH-1:0] change   // troco calculado (centavos)
+  input  logic [7:0] credit,  // crédito acumulado (centavos)
+  input  logic [7:0] price,   // preço do item selecionado (centavos)
+  output logic [7:0] change   // troco calculado (centavos)
 );
 
   // ----------------------------------------------------------
@@ -36,4 +36,3 @@ module subtractor (
   assign change = credit - price;
 
 endmodule
-
