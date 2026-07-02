@@ -282,4 +282,3 @@ module tb_vending;
   end
 
 endmodule
-
