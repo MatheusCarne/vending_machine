@@ -149,4 +149,3 @@ module vending_top (
   assign state_out = 3'(state_internal);
 
 endmodule
-
