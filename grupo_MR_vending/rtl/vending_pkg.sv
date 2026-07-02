@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 // ============================================================
 // vending_pkg.sv
 // Package global: encoding de estados, tipos e funções
@@ -16,7 +18,8 @@ package vending_pkg;
     CHECK    = 3'b010,
     DISPENSE = 3'b011,
     CHANGE   = 3'b100,
-    ERROR    = 3'b101
+    ERROR    = 3'b101,
+    CHECK_WAIT = 3'b110
   } state_t;
 
   // ----------------------------------------------------------
@@ -66,4 +69,3 @@ package vending_pkg;
   endfunction
 
 endpackage
-
