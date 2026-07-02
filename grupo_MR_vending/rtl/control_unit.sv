@@ -20,18 +20,24 @@ module control_unit (
   input  logic       clk,
   input  logic       rst,         // reset síncrono, ativo alto
   input  logic [1:0] coin_in,     // moeda inserida (00 = nenhuma)
+  input  logic [1:0]  sel_item,     
   input  logic       confirm,     // usuário confirma compra
   input  logic       cancel,      // usuário cancela — retorna ao IDLE
   input  logic       can_sell,    // comparador: crédito OK e estoque > 0
+  input  logic [7:0]  change,
+  input  logic [7:0]  credit,
   // Sinais de controle para o caminho de dados
   output logic       credit_load, // habilita escrita no registrador de crédito
+  output logic        credit_clr,
   output logic       mem_read,    // habilita leitura da memória
   output logic       mem_write,   // habilita escrita na memória (decrementa stock)
   output logic       change_load, // habilita registro do troco em change_out
   // Saídas da máquina (decodificadas de state_reg — Moore)
   output logic       dispense,    // pulso de 1 ciclo: libera o item físico
   output logic       error,       // crédito insuficiente ou sem estoque
-  output state_t     state_out    // estado corrente (depuração e testbench)
+  output logic [7:0]  change_out,
+  output logic [7:0]  display,
+  output logic [2:0]  state_out
 );
 
   // ----------------------------------------------------------
@@ -66,6 +72,9 @@ module control_unit (
     change_load = 1'b0;
     dispense    = 1'b0;
     error       = 1'b0;
+    change_out  = 8'd0;
+    display     = credit;
+    state_out   = state;
 
     // Cancel tem prioridade máxima em qualquer estado (exceto rst)
     if (cancel) begin
