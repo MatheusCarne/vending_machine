@@ -1,5 +1,3 @@
-`timescale 1ns/1ps
-
 // ============================================================
 // vending_pkg.sv
 // Package global: encoding de estados, tipos e funções
