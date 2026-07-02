@@ -19,9 +19,9 @@
 import vending_pkg::*;
 
 module comparator (
-  input  logic [DATA_WIDTH-1:0] credit,    // crédito acumulado (centavos)
-  input  logic [DATA_WIDTH-1:0] price,     // preço do item selecionado (centavos)
-  input  logic [DATA_WIDTH-1:0] stock,     // estoque do item selecionado
+  input  logic [7:0] credit,    // crédito acumulado (centavos)
+  input  logic [7:0] price,     // preço do item selecionado (centavos)
+  input  logic [7:0] stock,     // estoque do item selecionado
   output logic                  can_sell   // 1 = venda autorizada
 );
 
@@ -40,4 +40,3 @@ module comparator (
   assign can_sell = (credit >= price) && (|stock);
 
 endmodule
-
