@@ -16,11 +16,7 @@
 # 1. Bibliotecas
 # Caminho conforme a biblioteca disponível no lab
 # ------------------------------------------------------------
-set lib_path "/Tools/synopsys/libraries/SAED32_EDK/lib/stdcell_rvt/db_nldm"
-set target_lib "saed32rvt_tt1p05vn40c.db"
-
-set target_library  "$lib_path/$target_lib"
-set link_library    [list "*" "$lib_path/$target_lib"]
+source synth/.synopsys_dc.setup
 
 # ------------------------------------------------------------
 # 2. Analisar os arquivos RTL (ordem de dependência)
@@ -47,8 +43,8 @@ read_sdc synth/vending.sdc
 # ------------------------------------------------------------
 # 5. Verificar design — corrigir erros antes de sintetizar
 # ------------------------------------------------------------
-check_design > reports/check_design.rpt
-puts "check_design salvo em reports/check_design.rpt"
+check_design
+redirect synth/reports/check_design.rpt { check_design }
 
 # ------------------------------------------------------------
 # 6. Sintetizar
@@ -58,18 +54,18 @@ compile_ultra -no_autoungroup
 # ------------------------------------------------------------
 # 7. Gerar relatórios
 # ------------------------------------------------------------
-report_area                          > reports/report_area.rpt
-report_timing                        > reports/report_timing.rpt
-report_power                         > reports/report_power.rpt
-report_constraint -all_violators     > reports/report_constraint.rpt
+redirect synth/reports/area.rpt       { report_area -hierarchy }
+redirect synth/reports/timing.rpt     { report_timing -max_paths 10 }
+redirect synth/reports/power.rpt      { report_power }
+redirect synth/reports/violations.rpt { report_constraint -all_violators }
 
 puts "Relatórios salvos em reports/"
 
 # ------------------------------------------------------------
 # 8. Exportar netlist sintetizada
 # ------------------------------------------------------------
-write -format verilog -hierarchy -output reports/vending_top_netlist.v
+write -format verilog -hierarchy -output synth/vending_top_netlist.v
+write -format ddc     -hierarchy -output synth/vending_syn.ddc
 
 puts "Netlist exportada: reports/vending_top_netlist.v"
 puts "Síntese concluída com sucesso."
-
