@@ -18,6 +18,7 @@ create_clock -name clk \
 # 2. Incerteza do clock — modela jitter e skew
 # ------------------------------------------------------------
 set_clock_uncertainty 0.5 [get_clocks clk]
+set_clock_transition  0.1 [get_clocks clk]
 
 # ------------------------------------------------------------
 # 3. Input delay — todas as entradas exceto clk
@@ -42,10 +43,9 @@ set_output_delay 3 -clock clk [get_ports {
 }]
 
 # ------------------------------------------------------------
-# 5. Carga e célula de drive típicas da biblioteca SAED32
+# 5. Carga e célula de drive
 # ------------------------------------------------------------
+set_max_fanout 8 [current_design]
 set_load      0.05 [all_outputs]
-set_driving_cell -lib_cell INVX1_RVT -library saed32rvt_tt1p05vn40c \
-                 [all_inputs]
 
 
