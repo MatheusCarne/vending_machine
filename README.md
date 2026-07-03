@@ -28,7 +28,6 @@ Trilha: RTL Design | Módulo: Projeto de Controlador Digital
 </table>
 
 </div>
----
 
 ## Descrição
 
