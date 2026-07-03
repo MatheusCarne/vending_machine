@@ -1,0 +1,29 @@
+# Arquivos gerados pelo VCS
+csrc/
+*.daidir/
+simv
+sim_tb
+sim_top
+*.vcd
+*.pvl
+*.pvk
+*.syn
+*.mr
+ucli.key
+cksum_dir/
+
+# Arquivos gerados pelo Design Compiler
+work/
+alib-52/
+default.svf
+*.log
+*.ddc
+command.log
+
+# Manter apenas os relatórios importantes
+!synth/reports/area.rpt
+!synth/reports/timing.rpt
+!synth/reports/power.rpt
+!synth/reports/violations.rpt
+!synth/reports/check_design.rpt
+!synth/vending_top_netlist.v

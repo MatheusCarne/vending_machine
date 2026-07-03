@@ -1,0 +1,451 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 10
+Design : vending_top
+Version: X-2025.06-SP2
+Date   : Fri Jul  3 16:07:03 2026
+****************************************
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+  Startpoint: cancel (input port clocked by clk)
+  Endpoint: dispense (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  control_unit       ForQA                 saed32rvt_tt1p05v25c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     3.00       3.00 r
+  cancel (in)                              0.00       3.00 r
+  u_control/cancel (control_unit)          0.00       3.00 r
+  u_control/U3/Y (INVX0_RVT)               0.06       3.06 f
+  u_control/U8/Y (AND4X1_RVT)              0.09       3.15 f
+  u_control/dispense (control_unit)        0.00       3.15 f
+  dispense (out)                           0.00       3.16 f
+  data arrival time                                   3.16
+
+  clock clk (rise edge)                   20.00      20.00
+  clock network delay (ideal)              0.00      20.00
+  clock uncertainty                       -0.50      19.50
+  output external delay                   -3.00      16.50
+  data required time                                 16.50
+  -----------------------------------------------------------
+  data required time                                 16.50
+  data arrival time                                  -3.16
+  -----------------------------------------------------------
+  slack (MET)                                        13.34
+
+
+  Startpoint: cancel (input port clocked by clk)
+  Endpoint: error (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  control_unit       ForQA                 saed32rvt_tt1p05v25c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     3.00       3.00 r
+  cancel (in)                              0.00       3.00 r
+  u_control/cancel (control_unit)          0.00       3.00 r
+  u_control/U3/Y (INVX0_RVT)               0.06       3.06 f
+  u_control/U9/Y (AND4X1_RVT)              0.09       3.15 f
+  u_control/error (control_unit)           0.00       3.15 f
+  error (out)                              0.00       3.15 f
+  data arrival time                                   3.15
+
+  clock clk (rise edge)                   20.00      20.00
+  clock network delay (ideal)              0.00      20.00
+  clock uncertainty                       -0.50      19.50
+  output external delay                   -3.00      16.50
+  data required time                                 16.50
+  -----------------------------------------------------------
+  data required time                                 16.50
+  data arrival time                                  -3.15
+  -----------------------------------------------------------
+  slack (MET)                                        13.35
+
+
+  Startpoint: coin_in[0] (input port clocked by clk)
+  Endpoint: u_credit/credit_reg[7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  credit_reg         ForQA                 saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 r
+  coin_in[0] (in)                                         0.00       3.00 r
+  u_credit/coin_in[0] (credit_reg)                        0.00       3.00 r
+  u_credit/U3/Y (INVX0_RVT)                               0.04       3.04 f
+  u_credit/U4/Y (OR2X1_RVT)                               0.06       3.09 f
+  u_credit/U5/Y (INVX0_RVT)                               0.05       3.14 r
+  u_credit/U7/Y (AO22X1_RVT)                              0.06       3.20 r
+  u_credit/U8/Y (NAND2X0_RVT)                             0.04       3.25 f
+  u_credit/U9/Y (NAND2X0_RVT)                             0.05       3.30 r
+  u_credit/U10/Y (NAND2X0_RVT)                            0.05       3.35 f
+  u_credit/U11/Y (INVX0_RVT)                              0.04       3.39 r
+  u_credit/intadd_0/U4/CO (FADDX1_RVT)                    0.09       3.47 r
+  u_credit/intadd_0/U3/CO (FADDX1_RVT)                    0.09       3.56 r
+  u_credit/intadd_0/U2/CO (FADDX1_RVT)                    0.09       3.65 r
+  u_credit/U34/Y (AO222X1_RVT)                            0.09       3.74 r
+  u_credit/U35/SO (HADDX1_RVT)                            0.08       3.82 f
+  u_credit/U36/Y (AO22X1_RVT)                             0.04       3.86 f
+  u_credit/credit_reg[7]/D (DFFX1_RVT)                    0.01       3.88 f
+  data arrival time                                                  3.88
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_credit/credit_reg[7]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.01      19.49
+  data required time                                                19.49
+  --------------------------------------------------------------------------
+  data required time                                                19.49
+  data arrival time                                                 -3.88
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.61
+
+
+  Startpoint: coin_in[0] (input port clocked by clk)
+  Endpoint: u_credit/credit_reg[6]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  credit_reg         ForQA                 saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 r
+  coin_in[0] (in)                                         0.00       3.00 r
+  u_credit/coin_in[0] (credit_reg)                        0.00       3.00 r
+  u_credit/U3/Y (INVX0_RVT)                               0.04       3.04 f
+  u_credit/U4/Y (OR2X1_RVT)                               0.06       3.09 f
+  u_credit/U5/Y (INVX0_RVT)                               0.05       3.14 r
+  u_credit/U7/Y (AO22X1_RVT)                              0.06       3.20 r
+  u_credit/U8/Y (NAND2X0_RVT)                             0.04       3.25 f
+  u_credit/U9/Y (NAND2X0_RVT)                             0.05       3.30 r
+  u_credit/U10/Y (NAND2X0_RVT)                            0.05       3.35 f
+  u_credit/U11/Y (INVX0_RVT)                              0.04       3.39 r
+  u_credit/intadd_0/U4/CO (FADDX1_RVT)                    0.09       3.47 r
+  u_credit/intadd_0/U3/CO (FADDX1_RVT)                    0.09       3.56 r
+  u_credit/intadd_0/U2/CO (FADDX1_RVT)                    0.09       3.65 r
+  u_credit/U32/SO (HADDX1_RVT)                            0.09       3.74 f
+  u_credit/U33/Y (AO22X1_RVT)                             0.05       3.79 f
+  u_credit/credit_reg[6]/D (DFFX1_RVT)                    0.01       3.81 f
+  data arrival time                                                  3.81
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_credit/credit_reg[6]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.01      19.49
+  data required time                                                19.49
+  --------------------------------------------------------------------------
+  data required time                                                19.49
+  data arrival time                                                 -3.81
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.68
+
+
+  Startpoint: sel_item[1]
+              (input port clocked by clk)
+  Endpoint: u_memory/mem_reg[3][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  memory             8000                  saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 f
+  sel_item[1] (in)                                        0.00       3.00 f
+  u_memory/sel_item[1] (memory)                           0.00       3.00 f
+  u_memory/U7/Y (MUX41X1_RVT)                             0.21       3.21 r
+  u_memory/U8/Y (INVX0_RVT)                               0.04       3.25 f
+  u_memory/U29/Y (NAND2X0_RVT)                            0.05       3.30 r
+  u_memory/U30/Y (OR2X1_RVT)                              0.06       3.36 r
+  u_memory/U31/Y (OR2X1_RVT)                              0.05       3.41 r
+  u_memory/U32/Y (OR2X1_RVT)                              0.05       3.47 r
+  u_memory/U33/Y (OR2X1_RVT)                              0.05       3.52 r
+  u_memory/U34/Y (NOR2X0_RVT)                             0.06       3.59 f
+  u_memory/U35/SO (HADDX1_RVT)                            0.09       3.68 r
+  u_memory/U36/Y (AO22X1_RVT)                             0.05       3.73 r
+  u_memory/mem_reg[3][7]/D (DFFX1_RVT)                    0.01       3.75 r
+  data arrival time                                                  3.75
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_memory/mem_reg[3][7]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.03      19.47
+  data required time                                                19.47
+  --------------------------------------------------------------------------
+  data required time                                                19.47
+  data arrival time                                                 -3.75
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.73
+
+
+  Startpoint: sel_item[1]
+              (input port clocked by clk)
+  Endpoint: u_memory/mem_reg[0][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  memory             8000                  saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 f
+  sel_item[1] (in)                                        0.00       3.00 f
+  u_memory/sel_item[1] (memory)                           0.00       3.00 f
+  u_memory/U7/Y (MUX41X1_RVT)                             0.21       3.21 r
+  u_memory/U8/Y (INVX0_RVT)                               0.04       3.25 f
+  u_memory/U29/Y (NAND2X0_RVT)                            0.05       3.30 r
+  u_memory/U30/Y (OR2X1_RVT)                              0.06       3.36 r
+  u_memory/U31/Y (OR2X1_RVT)                              0.05       3.41 r
+  u_memory/U32/Y (OR2X1_RVT)                              0.05       3.47 r
+  u_memory/U33/Y (OR2X1_RVT)                              0.05       3.52 r
+  u_memory/U34/Y (NOR2X0_RVT)                             0.06       3.59 f
+  u_memory/U35/SO (HADDX1_RVT)                            0.09       3.68 r
+  u_memory/U89/Y (AO22X1_RVT)                             0.05       3.73 r
+  u_memory/mem_reg[0][7]/D (DFFX1_RVT)                    0.01       3.75 r
+  data arrival time                                                  3.75
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_memory/mem_reg[0][7]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.03      19.47
+  data required time                                                19.47
+  --------------------------------------------------------------------------
+  data required time                                                19.47
+  data arrival time                                                 -3.75
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.73
+
+
+  Startpoint: sel_item[1]
+              (input port clocked by clk)
+  Endpoint: u_memory/mem_reg[1][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  memory             8000                  saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 f
+  sel_item[1] (in)                                        0.00       3.00 f
+  u_memory/sel_item[1] (memory)                           0.00       3.00 f
+  u_memory/U7/Y (MUX41X1_RVT)                             0.21       3.21 r
+  u_memory/U8/Y (INVX0_RVT)                               0.04       3.25 f
+  u_memory/U29/Y (NAND2X0_RVT)                            0.05       3.30 r
+  u_memory/U30/Y (OR2X1_RVT)                              0.06       3.36 r
+  u_memory/U31/Y (OR2X1_RVT)                              0.05       3.41 r
+  u_memory/U32/Y (OR2X1_RVT)                              0.05       3.47 r
+  u_memory/U33/Y (OR2X1_RVT)                              0.05       3.52 r
+  u_memory/U34/Y (NOR2X0_RVT)                             0.06       3.59 f
+  u_memory/U35/SO (HADDX1_RVT)                            0.09       3.68 r
+  u_memory/U75/Y (AO22X1_RVT)                             0.05       3.73 r
+  u_memory/mem_reg[1][7]/D (DFFX1_RVT)                    0.01       3.75 r
+  data arrival time                                                  3.75
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_memory/mem_reg[1][7]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.03      19.47
+  data required time                                                19.47
+  --------------------------------------------------------------------------
+  data required time                                                19.47
+  data arrival time                                                 -3.75
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.73
+
+
+  Startpoint: sel_item[1]
+              (input port clocked by clk)
+  Endpoint: u_memory/mem_reg[2][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  memory             8000                  saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 f
+  sel_item[1] (in)                                        0.00       3.00 f
+  u_memory/sel_item[1] (memory)                           0.00       3.00 f
+  u_memory/U7/Y (MUX41X1_RVT)                             0.21       3.21 r
+  u_memory/U8/Y (INVX0_RVT)                               0.04       3.25 f
+  u_memory/U29/Y (NAND2X0_RVT)                            0.05       3.30 r
+  u_memory/U30/Y (OR2X1_RVT)                              0.06       3.36 r
+  u_memory/U31/Y (OR2X1_RVT)                              0.05       3.41 r
+  u_memory/U32/Y (OR2X1_RVT)                              0.05       3.47 r
+  u_memory/U33/Y (OR2X1_RVT)                              0.05       3.52 r
+  u_memory/U34/Y (NOR2X0_RVT)                             0.06       3.59 f
+  u_memory/U35/SO (HADDX1_RVT)                            0.09       3.68 r
+  u_memory/U62/Y (AO22X1_RVT)                             0.05       3.73 r
+  u_memory/mem_reg[2][7]/D (DFFX1_RVT)                    0.01       3.75 r
+  data arrival time                                                  3.75
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_memory/mem_reg[2][7]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.03      19.47
+  data required time                                                19.47
+  --------------------------------------------------------------------------
+  data required time                                                19.47
+  data arrival time                                                 -3.75
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.73
+
+
+  Startpoint: coin_in[0] (input port clocked by clk)
+  Endpoint: u_credit/credit_reg[5]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  credit_reg         ForQA                 saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 r
+  coin_in[0] (in)                                         0.00       3.00 r
+  u_credit/coin_in[0] (credit_reg)                        0.00       3.00 r
+  u_credit/U3/Y (INVX0_RVT)                               0.04       3.04 f
+  u_credit/U4/Y (OR2X1_RVT)                               0.06       3.09 f
+  u_credit/U5/Y (INVX0_RVT)                               0.05       3.14 r
+  u_credit/U7/Y (AO22X1_RVT)                              0.06       3.20 r
+  u_credit/U8/Y (NAND2X0_RVT)                             0.04       3.25 f
+  u_credit/U9/Y (NAND2X0_RVT)                             0.05       3.30 r
+  u_credit/U10/Y (NAND2X0_RVT)                            0.05       3.35 f
+  u_credit/U11/Y (INVX0_RVT)                              0.04       3.39 r
+  u_credit/intadd_0/U4/CO (FADDX1_RVT)                    0.09       3.47 r
+  u_credit/intadd_0/U3/CO (FADDX1_RVT)                    0.09       3.56 r
+  u_credit/intadd_0/U2/S (FADDX1_RVT)                     0.11       3.67 f
+  u_credit/U29/Y (AO22X1_RVT)                             0.06       3.73 f
+  u_credit/credit_reg[5]/D (DFFX1_RVT)                    0.01       3.74 f
+  data arrival time                                                  3.74
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_credit/credit_reg[5]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.01      19.49
+  data required time                                                19.49
+  --------------------------------------------------------------------------
+  data required time                                                19.49
+  data arrival time                                                 -3.74
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.75
+
+
+  Startpoint: sel_item[1]
+              (input port clocked by clk)
+  Endpoint: u_memory/mem_reg[3][6]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  vending_top        8000                  saed32rvt_tt1p05v25c
+  memory             8000                  saed32rvt_tt1p05v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    3.00       3.00 f
+  sel_item[1] (in)                                        0.00       3.00 f
+  u_memory/sel_item[1] (memory)                           0.00       3.00 f
+  u_memory/U7/Y (MUX41X1_RVT)                             0.21       3.21 f
+  u_memory/U8/Y (INVX0_RVT)                               0.04       3.25 r
+  u_memory/U29/Y (NAND2X0_RVT)                            0.05       3.30 f
+  u_memory/U30/Y (OR2X1_RVT)                              0.06       3.36 f
+  u_memory/U31/Y (OR2X1_RVT)                              0.05       3.41 f
+  u_memory/U32/Y (OR2X1_RVT)                              0.05       3.47 f
+  u_memory/U33/Y (OR2X1_RVT)                              0.05       3.52 f
+  u_memory/U34/Y (NOR2X0_RVT)                             0.06       3.58 r
+  u_memory/U37/Y (AO21X1_RVT)                             0.05       3.63 r
+  u_memory/U38/Y (AO22X1_RVT)                             0.06       3.69 r
+  u_memory/mem_reg[3][6]/D (DFFX1_RVT)                    0.01       3.70 r
+  data arrival time                                                  3.70
+
+  clock clk (rise edge)                                  20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.50      19.50
+  u_memory/mem_reg[3][6]/CLK (DFFX1_RVT)                  0.00      19.50 r
+  library setup time                                     -0.03      19.47
+  data required time                                                19.47
+  --------------------------------------------------------------------------
+  data required time                                                19.47
+  data arrival time                                                 -3.70
+  --------------------------------------------------------------------------
+  slack (MET)                                                       15.77
+
+
+1
