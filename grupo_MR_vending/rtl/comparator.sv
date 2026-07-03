@@ -16,13 +16,13 @@
 //   Não há clock aqui — a saída muda instantaneamente com as entradas.
 // ============================================================
 
-import vending_pkg::*;
-
-module comparator (
-  input  logic [7:0] credit,    // crédito acumulado (centavos)
-  input  logic [7:0] price,     // preço do item selecionado (centavos)
-  input  logic [7:0] stock,     // estoque do item selecionado
-  output logic                  can_sell   // 1 = venda autorizada
+module comparator
+  import vending_pkg::*;
+(
+  input  logic [DATA_WIDTH-1:0] credit,
+  input  logic [DATA_WIDTH-1:0] price,
+  input  logic [DATA_WIDTH-1:0] stock,
+  output logic                  can_sell
 );
 
   // ----------------------------------------------------------
