@@ -13,16 +13,16 @@
 //   Máximo acumulável: 255 centavos (R$2,55)
 // ============================================================
 
-import vending_pkg::*;
-
-module credit_reg (
+module credit_reg
+  import vending_pkg::*;
+(
   input  logic       clk,
-  input  logic       rst,          // reset síncrono, ativo alto
-  input  logic       cancel,       // zera crédito em qualquer estado
-  input  logic       credit_load,  // habilitação de escrita (vem da FSM)
-  input  logic [1:0] coin_in,      // moeda inserida (decodificada internamente)
-  input  state_t     state,        // estado atual da FSM (distingue COLLECT/CHANGE)
-  output logic [7:0] credit        // crédito acumulado em centavos
+  input  logic       rst,
+  input  logic       cancel,
+  input  logic       credit_load,
+  input  logic [1:0] coin_in,
+  input  state_t     state,
+  output logic [7:0] credit
 );
 
   // Decodificação combinacional da moeda (usa função do package)
