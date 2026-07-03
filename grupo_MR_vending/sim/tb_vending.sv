@@ -20,9 +20,9 @@
 // ============================================================
 
 `timescale 1ns/1ps
-import vending_pkg::*;
-
-module tb_vending;
+module tb_vending
+  import vending_pkg::*;
+();
 
   // ----------------------------------------------------------
   // Sinais de interface com o DUT
