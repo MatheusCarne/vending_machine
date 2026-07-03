@@ -16,9 +16,11 @@
 //   state_out  : direto do registrador de estado da FSM
 // ============================================================
 
-import vending_pkg::*;
 
-module vending_top (
+
+module vending_top
+  import vending_pkg::*;
+(
   input  logic       clk,
   input  logic       rst,
   input  logic [1:0] coin_in,
