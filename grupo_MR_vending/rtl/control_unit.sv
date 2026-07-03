@@ -16,7 +16,9 @@
 
 import vending_pkg::*;
 
-module control_unit (
+module control_unit
+  import vending_pkg::*;
+(
   input  logic       clk,
   input  logic       rst,         // reset síncrono, ativo alto
   input  logic [1:0] coin_in,     // moeda inserida (00 = nenhuma)
