@@ -14,7 +14,6 @@
 // nunca diretamente das entradas.
 // ============================================================
 
-import vending_pkg::*;
 
 module control_unit
   import vending_pkg::*;
