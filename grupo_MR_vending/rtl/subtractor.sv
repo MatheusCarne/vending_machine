@@ -18,12 +18,12 @@
 //   A FSM passa por CHANGE normalmente e volta ao IDLE.
 // ============================================================
 
-import vending_pkg::*;
-
-module subtractor (
-  input  logic [7:0] credit,  // crédito acumulado (centavos)
-  input  logic [7:0] price,   // preço do item selecionado (centavos)
-  output logic [7:0] change   // troco calculado (centavos)
+module subtractor
+  import vending_pkg::*;
+(
+  input  logic [DATA_WIDTH-1:0] credit,
+  input  logic [DATA_WIDTH-1:0] price,
+  output logic [DATA_WIDTH-1:0] change
 );
 
   // ----------------------------------------------------------
